@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  dev:
+    container_name: florence_dev
+    image: nvcr.io/nvidia/pytorch:24.06-py3
+    volumes:
+      - .:/app
+    working_dir: /app
+    tty: true
+    restart: always
+    # install requirements.txt
+    command: bash -c "pip install -r requirements.txt && bash"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
