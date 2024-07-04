@@ -9,6 +9,8 @@ services:
     working_dir: /app
     tty: true
     restart: always
+    # privileged: true にしないと GPU を使えない
+    privileged: true
     # install requirements.txt
     command: bash -c "pip install -r requirements.txt && bash"
     deploy:
