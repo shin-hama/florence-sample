@@ -15,6 +15,7 @@ processor = AutoProcessor.from_pretrained(
 
 url = "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/tasks/car.jpg?download=true"
 image = Image.open(requests.get(url, stream=True).raw)
+image = Image.open(open("./covid-19.jpg", "rb"))
 
 
 def run_example(task_prompt, text_input=None):
@@ -47,5 +48,15 @@ def run_example(task_prompt, text_input=None):
     print(parsed_answer)
 
 
-prompt = "<CAPTION>"
+# tasks:
+# "<CAPTION>"
+# "<DETAILED_CAPTION>"
+# "<MORE_DETAILED_CAPTION>"
+# "<CAPTION_TO_PHRASE_GROUNDING>"
+# "<OD>"
+# "<DENSE_REGION_CAPTION>"
+# "<REGION_PROPOSAL>"
+# "<OCR>"
+# "<OCR_WITH_REGION>"
+prompt = "<MORE_DETAILED_CAPTION>"
 run_example(prompt)
